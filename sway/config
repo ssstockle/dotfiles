@@ -1,0 +1,46 @@
+set $mod Mod4
+set $term wezterm
+set $menu wofi --show drun --allow-images
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
+bindsym $mod+Return exec $term
+bindsym $mod+Space exec $menu
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+e exec ~/.config/sway/scripts/power_menu.sh
+bindsym $mod+Shift+slash exec ~/.config/sway/scripts/shortcuts_menu.sh
+
+# Brightness
+bindsym $mod+F2 exec "light -A 1"
+bindsym $mod+F3 exec "light -U 1"
+
+# Navigation
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Appearance
+default_border pixel 2
+gaps inner 10
+gaps outer 0
+
+client.focused          #ffffff  #000000  #ffffff  #ffffff   #ffffff
+client.focused_inactive #333333  #000000  #888888  #333333   #333333
+client.unfocused        #333333  #000000  #888888  #333333   #333333
+client.urgent           #ffffff  #ffffff  #000000  #ffffff   #ffffff
+
+output * bg /home/ssstockle/Pictures/wallpaper_01.jpg fill
+
+bar {
+    swaybar_command waybar
+}
